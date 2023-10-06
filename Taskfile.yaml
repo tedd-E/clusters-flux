@@ -1,0 +1,25 @@
+version: '3'
+
+vars:
+  GITHUB_USER: merusso
+
+tasks:
+  bootstrap: 
+    desc: Install Flux on a new cluster
+    cmd: flux bootstrap github
+      --owner={{.GITHUB_USER}}
+      --repository=fleet-infra
+      --branch=main
+      --path=./clusters/my-cluster
+      --personal
+  
+  reconcile:
+    desc: Manually trigger Flux reconciliation
+    cmd: flux reconcile kustomization flux-system
+  
+  uninstall:
+    desc: Uninstall Flux on a cluster
+    summary: |
+      Uninstall Flux on a cluster.
+      Note: Does not remove components installed via Flux
+    cmd: flux uninstall
