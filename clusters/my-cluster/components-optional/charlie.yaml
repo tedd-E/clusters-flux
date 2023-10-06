@@ -27,4 +27,4 @@ spec:
     - name: alpha
     - name: bravo
   values:
-    replicaCount: 3
+    replicaCount: 2
