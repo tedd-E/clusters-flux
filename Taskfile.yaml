@@ -9,7 +9,7 @@ dotenv:
 
 tasks:
   bootstrap: 
-    desc: Install Flux on a new cluster
+    desc: Bootstrap Flux on a new cluster
     cmd: flux bootstrap github
       --owner={{.GITHUB_USER}}
       --repository=fleet-infra
