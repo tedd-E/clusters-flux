@@ -3,6 +3,10 @@ version: '3'
 vars:
   GITHUB_USER: merusso
 
+dotenv:
+  - .env
+  - .ignore/.env
+
 tasks:
   bootstrap: 
     desc: Install Flux on a new cluster
