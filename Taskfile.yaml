@@ -19,7 +19,7 @@ tasks:
   
   reconcile:
     desc: Manually trigger Flux reconciliation
-    cmd: flux reconcile kustomization flux-system
+    cmd: flux reconcile kustomization flux-system --with-source
   
   uninstall:
     desc: Uninstall Flux on a cluster
