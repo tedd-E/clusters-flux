@@ -1,6 +1,6 @@
 version: '3'
 
-vars:
+env:
   GITHUB_USER: merusso
 
 dotenv:
@@ -10,16 +10,30 @@ dotenv:
 tasks:
   bootstrap: 
     desc: Bootstrap Flux on a new cluster
-    cmd: flux bootstrap github
-      --owner={{.GITHUB_USER}}
-      --repository=fleet-infra
-      --branch=main
-      --path=./clusters/my-cluster
-      --personal
+    # cmd: flux bootstrap github
+    #   --owner={{.GITHUB_USER}}
+    #   --repository=fleet-infra
+    #   --branch=main
+    #   --path=./clusters/my-cluster
+    #   --personal
+    cmds:
+      - task: install
+      - task: bootstrap-git-secret
+      - kubectl apply -f clusters/my-cluster/flux-system
+  
+  bootstrap-git-secret:
+    cmd: >
+      flux create secret git flux-system --username $GITHUB_USER --password $GITHUB_TOKEN
+      --url=https://github.com/merusso/fleet-infra.git
+
+  install: flux install
   
   reconcile:
     desc: Manually trigger Flux reconciliation
     cmd: flux reconcile kustomization flux-system --with-source
+
+  suspend: flux suspend kustomization flux-system
+  resume: flux resume kustomization flux-system
   
   uninstall:
     desc: Uninstall Flux on a cluster
