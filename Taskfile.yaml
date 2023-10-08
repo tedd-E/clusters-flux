@@ -30,7 +30,10 @@ tasks:
   
   reconcile:
     desc: Manually trigger Flux reconciliation
-    cmd: flux reconcile kustomization flux-system --with-source
+    cmds:
+      - flux reconcile kustomization flux-system --with-source
+      - flux reconcile source git cluster-components
+      - flux reconcile kustomization components --with-source
 
   suspend: flux suspend kustomization flux-system
   resume: flux resume kustomization flux-system
