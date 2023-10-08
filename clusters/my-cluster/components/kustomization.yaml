@@ -3,3 +3,7 @@ kind: Kustomization
 resources:
 - ../../../cluster-components
 - ../../../cluster-components/optional/charlie.yaml
+
+labels:
+  - pairs:
+      gwcp.guidewire.com/tenant-name: quadrant-shared
