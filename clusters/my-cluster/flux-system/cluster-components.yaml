@@ -31,11 +31,11 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: components
+  name: components-root
   namespace: flux-system
 spec:
   interval: 10m0s
-  # path: .
+  path: clusters/my-cluster/components-root/
   prune: true
   sourceRef:
     kind: GitRepository
