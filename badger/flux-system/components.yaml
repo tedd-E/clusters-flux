@@ -5,7 +5,7 @@ metadata:
   name: cluster-components-flux
   namespace: flux-system
 spec:
-  interval: 1m0s
+  interval: 1m
   ref:
     tag: v0.1.0
   url: https://github.com/merusso/cluster-components-flux.git
@@ -16,7 +16,7 @@ metadata:
   name: components
   namespace: flux-system
 spec:
-  interval: 1m0s
+  interval: 1m
   ref:
     branch: main
   url: https://github.com/merusso/clusters-flux.git
@@ -30,7 +30,7 @@ metadata:
   name: components
   namespace: flux-system
 spec:
-  interval: 10m0s
+  interval: 1m
   path: badger/components/
   prune: true
   sourceRef:
