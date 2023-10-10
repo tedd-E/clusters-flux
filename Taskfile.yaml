@@ -19,7 +19,7 @@ tasks:
     cmds:
       - task: install
       - task: bootstrap-git-secret
-      - kubectl apply -f alpaca/flux-system
+      - task: apply-flux-config
   
   bootstrap-git-secret:
     cmd: >
@@ -27,6 +27,9 @@ tasks:
       --url=https://github.com/merusso/clusters-flux.git
 
   install: flux install
+
+  apply-flux-config: kubectl apply -f alpaca/flux-system
+  delete-flux-config: kubectl delete -f alpaca/flux-system
   
   reconcile:
     desc: Manually trigger Flux reconciliation
