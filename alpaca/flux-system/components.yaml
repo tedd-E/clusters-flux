@@ -2,7 +2,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
-  name: cluster-components
+  name: cluster-components-flux
   namespace: flux-system
 spec:
   interval: 1m0s
@@ -10,7 +10,7 @@ spec:
     branch: main
   secretRef:
     name: flux-system
-  url: https://github.com/merusso/cluster-components.git
+  url: https://github.com/merusso/cluster-components-flux.git
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
@@ -23,10 +23,10 @@ spec:
     branch: main
   secretRef:
     name: flux-system
-  url: https://github.com/merusso/fleet-infra.git
+  url: https://github.com/merusso/clusters-flux.git
   include:
     - repository:
-        name: cluster-components
+        name: cluster-components-flux
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -35,7 +35,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: clusters/my-cluster/components/
+  path: alpaca/components/
   prune: true
   sourceRef:
     kind: GitRepository

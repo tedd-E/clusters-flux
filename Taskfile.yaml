@@ -12,19 +12,19 @@ tasks:
     desc: Bootstrap Flux on a new cluster
     # cmd: flux bootstrap github
     #   --owner={{.GITHUB_USER}}
-    #   --repository=fleet-infra
+    #   --repository=clusters-flux
     #   --branch=main
-    #   --path=./clusters/my-cluster
+    #   --path=./alpaca
     #   --personal
     cmds:
       - task: install
       - task: bootstrap-git-secret
-      - kubectl apply -f clusters/my-cluster/flux-system
+      - kubectl apply -f alpaca/flux-system
   
   bootstrap-git-secret:
     cmd: >
       flux create secret git flux-system --username $GITHUB_USER --password $GITHUB_TOKEN
-      --url=https://github.com/merusso/fleet-infra.git
+      --url=https://github.com/merusso/clusters-flux.git
 
   install: flux install
   
@@ -32,7 +32,7 @@ tasks:
     desc: Manually trigger Flux reconciliation
     cmds:
       - flux reconcile kustomization flux-system --with-source
-      - flux reconcile source git cluster-components
+      - flux reconcile source git cluster-components-flux
       - flux reconcile kustomization components --with-source
 
   suspend: flux suspend kustomization flux-system
