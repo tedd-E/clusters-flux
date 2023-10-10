@@ -8,8 +8,6 @@ spec:
   interval: 1m0s
   ref:
     branch: main
-  secretRef:
-    name: flux-system
   url: https://github.com/merusso/cluster-components-flux.git
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
@@ -21,8 +19,6 @@ spec:
   interval: 1m0s
   ref:
     branch: main
-  secretRef:
-    name: flux-system
   url: https://github.com/merusso/clusters-flux.git
   include:
     - repository:

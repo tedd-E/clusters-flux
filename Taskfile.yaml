@@ -18,13 +18,13 @@ tasks:
     #   --personal
     cmds:
       - task: install
-      - task: bootstrap-git-secret
+      # - task: bootstrap-git-secret
       - task: apply-flux-config
   
   bootstrap-git-secret:
     cmd: >
-      flux create secret git flux-system --username $GITHUB_USER --password $GITHUB_TOKEN
-      --url=https://github.com/merusso/clusters-flux.git
+      flux create secret git github-token --username $GITHUB_USER --password $GITHUB_TOKEN
+      --url=https://github.com/$GITHUB_USER/clusters-flux.git
 
   install: flux install
 
