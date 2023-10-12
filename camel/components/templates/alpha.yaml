@@ -24,7 +24,7 @@ spec:
       version: '6.5.1'
   interval: 10m0s
   values:
-    replicaCount: 2
+    replicaCount: 1
   postRenderers:
     - kustomize:
         # This doesn't work, `labels` isn't yet supported
