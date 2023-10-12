@@ -28,5 +28,3 @@ spec:
     - name: bravo
   values:
     replicaCount: 1
-    hpa:
-      enabled: true
