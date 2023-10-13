@@ -24,3 +24,6 @@ spec:
         kind: GitRepository
         name: cluster-components-flux-helm
   interval: 10m0s
+  values:
+    charlie:
+      enabled: true
