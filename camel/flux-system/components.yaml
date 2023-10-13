@@ -1,4 +1,15 @@
 ---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: cluster-components-flux-helm
+  namespace: flux-system
+spec:
+  interval: 1m
+  ref:
+    tag: main
+  url: https://github.com/merusso/cluster-components-flux-helm.git
+---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -7,9 +18,9 @@ metadata:
 spec:
   chart:
     spec:
-      chart: camel/components
+      chart: .
       reconcileStrategy: Revision
       sourceRef:
         kind: GitRepository
-        name: flux-system
+        name: cluster-components-flux-helm
   interval: 10m0s
