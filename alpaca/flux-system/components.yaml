@@ -9,7 +9,7 @@ spec:
   ref:
     branch: main
     # tag: v0.2.0
-  url: https://github.com/merusso/cluster-components-flux.git
+  url: https://github.com/merusso/cluster-components-flux-kustomize.git
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository

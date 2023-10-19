@@ -8,7 +8,7 @@ spec:
   interval: 1m
   ref:
     tag: v0.1.0
-  url: https://github.com/merusso/cluster-components-flux.git
+  url: https://github.com/merusso/cluster-components-flux-kustomize.git
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
