@@ -8,3 +8,19 @@ labels:
   - pairs:
       gwcp.guidewire.com/dept: '2'
       atmos-cluster: alpaca
+
+patches:
+  - target:
+      name: alpha
+      kind: HelmRelease
+    patch: |
+      - op: replace
+        path: /spec/values/replicaCount
+        value: 2
+  - target:
+      name: bravo
+      kind: HelmRelease
+    patch: |
+      - op: replace
+        path: /spec/values/replicaCount
+        value: 2
