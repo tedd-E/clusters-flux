@@ -6,4 +6,5 @@ resources:
 
 labels:
   - pairs:
-      gwcp.guidewire.com/tenant-name: quadrant-shared
+      gwcp.guidewire.com/dept: '2'
+      atmos-cluster: badger
