@@ -25,5 +25,11 @@ spec:
         name: cluster-components-flux-helm
   interval: 10m0s
   values:
+    alpha:
+      values:
+        replicaCount: 2
+    bravo:
+      values:
+        replicaCount: 2
     charlie:
       enabled: true
