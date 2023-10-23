@@ -7,3 +7,4 @@ resources:
 labels:
   - pairs:
       gwcp.guidewire.com/tenant-name: quadrant-shared
+      atmos-cluster: alpaca
