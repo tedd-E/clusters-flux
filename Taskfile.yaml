@@ -7,6 +7,17 @@ dotenv:
   - .env
   - .ignore/.env
 
+includes:
+  alpaca:
+    taskfile: ./alpaca
+    dir: ./alpaca
+  badger:
+    taskfile: ./badger
+    dir: ./badger
+  camel:
+    taskfile: ./camel
+    dir: ./camel
+
 tasks:
   bootstrap: 
     desc: Bootstrap Flux on a new cluster
@@ -19,7 +30,7 @@ tasks:
     cmds:
       - task: install
       # - task: bootstrap-git-secret
-      - task: apply-flux-config
+      - task: camel:apply
   
   bootstrap-git-secret:
     cmd: >
@@ -27,16 +38,6 @@ tasks:
       --url=https://github.com/$GITHUB_USER/clusters-flux.git
 
   install: flux install
-
-  apply-flux-config: kubectl apply -f alpaca/flux-system
-  delete-flux-config: kubectl delete -f alpaca/flux-system
-  
-  reconcile:
-    desc: Manually trigger Flux reconciliation
-    cmds:
-      - flux reconcile kustomization flux-system --with-source
-      - flux reconcile source git cluster-components-flux
-      - flux reconcile kustomization components --with-source
 
   suspend: flux suspend kustomization flux-system
   resume: flux resume kustomization flux-system

@@ -1,0 +1,11 @@
+version: '3'
+
+tasks:
+  apply: kubectl apply -f flux-system
+  delete: kubectl delete -f flux-system
+  
+  reconcile:
+    desc: Manually trigger Flux reconciliation
+    cmds:
+      - flux reconcile kustomization flux-system --with-source
+      - flux reconcile helmrelease components --with-source
