@@ -17,6 +17,29 @@ patches:
       - op: replace
         path: /spec/values/replicaCount
         value: 2
+      - op: replace
+        path: /metadata/labels/gwcp.guidewire.com~1dept
+        value: 2
+      - op: add
+        path: /spec/postRenderers/0/kustomize/patches/-
+        value:
+          patch: |-
+            - op: replace
+              path: /metadata/labels/gwcp.guidewire.com~1dept
+              value: '2'
+          target:
+            name: .*
+            kind: .*
+      - op: add
+        path: /spec/postRenderers/0/kustomize/patches/-
+        value:
+          patch: |-
+            - op: replace
+              path: /spec/template/metadata/labels/gwcp.guidewire.com~1dept
+              value: '2'
+          target:
+            name: .*
+            kind: Deployment
   - target:
       name: bravo
       kind: HelmRelease
