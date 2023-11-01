@@ -10,7 +10,11 @@ All clusters deploy a component bundle defined in a separate repo
 
 ## Usage
 
-Dependencies: Kubernetes cluster, kubectl client, [Taskfile](https://taskfile.dev/)
+Dependencies:
+Kubernetes cluster,
+kubectl client,
+[Flux CLI](https://fluxcd.io/flux/installation/#install-the-flux-cli),
+[Taskfile](https://taskfile.dev/)
 
 I recommend using a local Kubernetes cluster. Any should do, but I'm using [k3d](https://k3d.io)
 to manage multiple local clusters.
