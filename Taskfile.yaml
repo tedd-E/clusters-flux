@@ -39,8 +39,8 @@ tasks:
 
   install: flux install
 
-  suspend: flux suspend kustomization flux-system
-  resume: flux resume kustomization flux-system
+  suspend: flux suspend kustomization --all && flux suspend helmrelease --all
+  resume: flux resume kustomization --all && flux resume helmrelease --all
   
   uninstall:
     desc: Uninstall Flux on a cluster
