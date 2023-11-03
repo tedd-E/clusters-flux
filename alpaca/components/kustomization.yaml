@@ -8,6 +8,7 @@ labels:
   - pairs:
       gwcp.guidewire.com/dept: '2'
       atmos-cluster: alpaca
+      atmos.guidewire.com/cluster-component: "true"
 
 patches:
   - target:
