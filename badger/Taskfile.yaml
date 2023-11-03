@@ -10,3 +10,9 @@ tasks:
       - flux reconcile kustomization flux-system --with-source
       - flux reconcile source git cluster-components-flux
       - flux reconcile kustomization components --with-source
+
+  wait:
+    desc: Wait for deployment to complete
+    cmds:
+      - kubectl wait -n flux-system kustomization components --for=condition=Ready --timeout=5m
+      - kubectl wait -A helmrelease -l atmos.guidewire.com/cluster-component=true --for=condition=Ready --timeout=5m
