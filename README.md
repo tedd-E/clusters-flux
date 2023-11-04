@@ -4,10 +4,6 @@ This repo contains Flux config for a collection of clusters.
 
 All clusters deploy a component bundle defined in a separate repo
 
-* alpaca - uses Kustomization to deploy bundle in repo cluster-components-flux-kustomize
-* badger - same as alpaca
-* camel - uses HelmRelease to deploy bundle in repo cluster-components-flux-helm
-
 ## Usage
 
 Dependencies:
@@ -38,3 +34,43 @@ $ task camel:apply
 
 There are other useful tasks to run, like deleting the Flux config or
 uninstalling Flux. To see all available commands, run: `task --list-all`
+
+## Clusters
+
+### alpaca
+
+Uses Kustomization to deploy bundle
+
+Layers:
+1. Kustomization "flux-system", source: clusters-flux.git
+2. Kustomization "components", sources: clusters-flux.git, cluster-components-flux-kustomize.git
+
+### badger
+
+Similar to alpaca but with a single layer
+
+Layers:
+1. Kustomization "components", sources: clusters-flux.git, cluster-components-flux-kustomize.git
+
+### camel
+
+Uses HelmRelease to deploy bundle
+
+Layers:
+1. Kustomization "flux-system", source: clusters-flux.git
+2. HelmRepository "components", source: cluster-components-flux-helm.git
+
+### dingo
+
+Similar to camel but with a single layer
+
+Layers:
+1. HelmRepository "components", source: cluster-components-flux-helm.git
+
+## Cluster Components Bundle
+
+Cluster components are defined in a separate bundle repo. The bundle is synced
+to each cluster.
+
+HelmRelease-based bundle: https://github.com/merusso/cluster-components-flux-helm
+Kustomization-based bundle: https://github.com/merusso/cluster-components-flux-kustomize 
