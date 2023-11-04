@@ -1,0 +1,16 @@
+version: '3'
+
+tasks:
+  apply: kubectl apply -f flux-system
+  delete: kubectl delete -f flux-system
+  
+  reconcile:
+    desc: Manually trigger Flux reconciliation
+    cmds:
+      - flux reconcile helmrelease components --with-source
+
+  wait:
+    desc: Wait for deployment to complete
+    cmds:
+      - kubectl wait -n flux-system helmrelease components --for=condition=Ready --timeout=5m
+      - kubectl wait -A helmrelease -l atmos.guidewire.com/cluster-component=true --for=condition=Ready --timeout=5m

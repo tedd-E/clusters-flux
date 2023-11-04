@@ -17,6 +17,9 @@ includes:
   camel:
     taskfile: ./camel
     dir: ./camel
+  dingo:
+    taskfile: ./dingo
+    dir: ./dingo
 
 tasks:
   bootstrap: 
