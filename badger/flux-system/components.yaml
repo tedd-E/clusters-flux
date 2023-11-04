@@ -2,12 +2,24 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
+  name: flux-system
+  namespace: flux-system
+spec:
+  interval: 1m
+  ref:
+    branch: main
+  url: https://github.com/merusso/clusters-flux.git
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
   name: cluster-components-flux
   namespace: flux-system
 spec:
   interval: 1m
   ref:
-    tag: v0.1.0
+    branch: main
+    # tag: v0.1.0
   url: https://github.com/merusso/cluster-components-flux-kustomize.git
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
@@ -36,5 +48,3 @@ spec:
   sourceRef:
     kind: GitRepository
     name: components
-  dependsOn:
-    - name: flux-system
