@@ -72,5 +72,5 @@ Layers:
 Cluster components are defined in a separate bundle repo. The bundle is synced
 to each cluster.
 
-HelmRelease-based bundle: https://github.com/merusso/cluster-components-flux-helm
-Kustomization-based bundle: https://github.com/merusso/cluster-components-flux-kustomize 
+* HelmRelease-based bundle: https://github.com/merusso/cluster-components-flux-helm
+* Kustomization-based bundle: https://github.com/merusso/cluster-components-flux-kustomize 
