@@ -14,3 +14,15 @@ tasks:
     cmds:
       - kubectl wait -n flux-system helmrelease components --for=condition=Ready --timeout=5m
       - kubectl wait -A helmrelease -l atmos.guidewire.com/cluster-component=true --for=condition=Ready --timeout=5m
+
+  deploy:
+    desc: Deploy components and run tests
+    cmds:
+      - task: apply
+      - task: reconcile
+      - task: wait
+      - task: test
+
+  test:
+    desc: Run component tests
+    cmd: ./test.sh
