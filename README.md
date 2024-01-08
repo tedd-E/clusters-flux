@@ -58,14 +58,14 @@ Uses HelmRelease to deploy bundle
 
 Layers:
 1. Kustomization "flux-system", source: clusters-flux.git
-2. HelmRepository "components", source: cluster-components-flux-helm.git
+2. HelmRelease "components", source: cluster-components-flux-helm.git
 
 ### dingo
 
 Similar to camel but with a single layer
 
 Layers:
-1. HelmRepository "components", source: cluster-components-flux-helm.git
+1. HelmRelease "components", source: cluster-components-flux-helm.git
 
 ## Cluster Components Bundle
 
