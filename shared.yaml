@@ -21,4 +21,4 @@ spec:
       values:
         replicaCount: 2
     charlie:
-      enabled: true
+      enabled: false
