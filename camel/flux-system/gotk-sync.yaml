@@ -8,7 +8,7 @@ spec:
   interval: 1m
   ref:
     branch: main
-  url: https://github.com/merusso/clusters-flux.git
+  url: https://github.com/sundarok/clusters-flux.git
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
