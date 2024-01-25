@@ -20,7 +20,9 @@ includes:
   dingo:
     taskfile: ./dingo
     dir: ./dingo
-
+  eagle:
+    taskfile: ./eagle
+    dir: ./eagle
 tasks:
   bootstrap: 
     desc: Bootstrap Flux on a new cluster
