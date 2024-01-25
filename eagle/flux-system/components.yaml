@@ -26,12 +26,12 @@ spec:
         name: cluster-components-flux-helm
   interval: 10m0s
   values:
-    departmentCode: 2
+    departmentCode: 275
     alpha:
       values:
-        replicaCount: 2
+        replicaCount: 1
     bravo:
       values:
-        replicaCount: 2
+        replicaCount: 1
     charlie:
       enabled: true
