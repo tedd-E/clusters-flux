@@ -35,3 +35,11 @@ spec:
         replicaCount: 1
     charlie:
       enabled: false
+    keda:
+      values:
+        resources:
+          operator:
+            limits:
+              cpu: 75m
+        operator:
+          replicaCount: 2
