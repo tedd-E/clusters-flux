@@ -42,4 +42,4 @@ spec:
             limits:
               cpu: 75m
         operator:
-          replicaCount: 2
+          replicaCount: 3
