@@ -1,0 +1,50 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../test-resources/charlie-local.yaml
+#  - ../../cluster-components-flux/optional/charlie-local.yaml
+
+labels:
+  - pairs:
+      gwcp.guidewire.com/dept: '2'
+      atmos-cluster: alpaca
+      atmos.guidewire.com/cluster-component: "true"
+
+patches:
+  - target:
+      name: alpha
+      kind: HelmRelease
+    patch: |
+      - op: replace
+        path: /spec/values/replicaCount
+        value: 2
+      - op: replace
+        path: /metadata/labels/gwcp.guidewire.com~1dept
+        value: 2
+      - op: add
+        path: /spec/postRenderers/0/kustomize/patches/-
+        value:
+          patch: |-
+            - op: replace
+              path: /metadata/labels/gwcp.guidewire.com~1dept
+              value: '2'
+          target:
+            name: .*
+            kind: .*
+      - op: add
+        path: /spec/postRenderers/0/kustomize/patches/-
+        value:
+          patch: |-
+            - op: replace
+              path: /spec/template/metadata/labels/gwcp.guidewire.com~1dept
+              value: '2'
+          target:
+            name: .*
+            kind: Deployment
+  - target:
+      name: bravo
+      kind: HelmRelease
+    patch: |
+      - op: replace
+        path: /spec/values/replicaCount
+        value: 2
