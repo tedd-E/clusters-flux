@@ -6,6 +6,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m
+  secretRef:
+    name: personal-git-auth
   ref:
     branch: main
   url: https://github.com/tedd-E/cluster-components.git
