@@ -37,7 +37,7 @@ spec:
   interval: 1m
   chart:
     spec:
-      chart: ./chart-one
+      chart: ./chart-two
       sourceRef:
         kind: GitRepository
         name: cluster-component
