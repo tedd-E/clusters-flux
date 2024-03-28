@@ -2,7 +2,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
-  name: cluster-components
+  name: cluster-component
   namespace: flux-system
 spec:
   interval: 1m
@@ -10,7 +10,7 @@ spec:
     name: personal-git-auth
   ref:
     branch: main
-  url: https://github.com/tedd-E/cluster-components.git
+  url: https://github.com/tedd-E/cluster-component.git
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
@@ -26,7 +26,7 @@ spec:
       chart: ./chart-one
       sourceRef:
         kind: GitRepository
-        name: cluster-components
+        name: cluster-component
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
@@ -40,4 +40,4 @@ spec:
       chart: ./chart-one
       sourceRef:
         kind: GitRepository
-        name: cluster-components
+        name: cluster-component
