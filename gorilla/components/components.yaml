@@ -11,3 +11,33 @@ spec:
   ref:
     branch: main
   url: https://github.com/tedd-E/cluster-components.git
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: chart-one
+  namespace: flux-system
+spec:
+  dependsOn:  # chart one depends on chart two for configmap
+    - name: chart-two
+  interval: 1m
+  chart:
+    spec:
+      chart: ./chart-one
+      sourceRef:
+        kind: GitRepository
+        name: cluster-components
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: chart-two   # this should be installed first by flux.....
+  namespace: flux-system
+spec:
+  interval: 1m
+  chart:
+    spec:
+      chart: ./chart-one
+      sourceRef:
+        kind: GitRepository
+        name: cluster-components
